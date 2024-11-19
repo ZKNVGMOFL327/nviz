@@ -1,0 +1,330 @@
+*{
+  margin:0px;
+  Padding:0px;
+  text-decoration: none;
+}
+  	
+body {
+Background:#071924;
+} 
+
+.body{
+	height:;
+width:100%;
+ background:black;
+ Margin-top:10px;
+ margin-bottom:10px; 
+ Padding-bottom:20px;
+ Padding-top:10px;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+ border-radius: 10px;    
+ Text-align:center;
+} 
+
+
+.likebtn-wrapper {
+margin-top:5px;
+}
+	
+.popup {
+	Font-family:'Roboto';
+ Font-weight:bold;
+  Color:black;
+    display: none;
+ position: fixed;
+ left: 50%;
+ top: 20px;
+ transform: translateX(-50%);
+ padding: 10px;
+ background-color: lightgrey;
+ border: 1px solid black;
+ border-radius: 5px;
+}
+  #readbutton {    
+ Font-size:16px;
+ Font-family:'Roboto';
+ Font-weight:bold;
+Border:none;
+Color:black;
+Margin-top:10px;
+Background:white;
+padding:6px;
+border-radius: 5px;
+} 
+      
+  #pauseResumeButton {
+  	Font-family:'Roboto';
+ Font-weight:bold;
+ Border:none;
+ Background:lightgrey;
+display: none;
+   Color:black;
+position:absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+padding: 6px;
+border-radius: 5px;
+font-size: 16px;
+cursor: pointer;
+}	
+
+
+
+canvas {
+            height:0px ;
+            display:none ;
+            width: 70%;
+            border: 1px solid black;
+            margin: 10px;
+            touch-action: none; /* Prevent default touch actions */
+        }
+        .controls {
+        	Text-align:left;
+        	Font-size:16px;
+        	Font-family:'Cantora one';
+        	color:white;
+            Margin-left:30px;
+        }
+        
+ .controls button {
+	border-radius:5px;
+Padding:3px;
+Font-weight:bold;
+Font-family:'Cantora one' ;
+Font-size:16px;
+Color:black;
+Background:white;
+Border:none;	
+}        
+        
+        #text-container {
+            font-size: 16px;
+            text-align: left;
+           white-space: pre-wrap ;
+            line-height: 1.5;
+            margin: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+            width:88%;
+            height: 400px;
+            Border-radius:8px;
+            Border:1px #ddd solid;
+            overflow-y: auto;
+        }
+        #text-container span {
+            padding: 1px;
+            border-radius: 5px;
+            background-color: green;
+            color: white;
+        }
+        
+  .theme-list{
+ Font-family:'Cantora One';
+Color:black;
+Background:white;
+Border-radius:15px;
+Margin-left:40px;
+Margin-right:40px;
+} 
+
+.theme-list button{
+color:; 
+margin-top:2px;
+background:transparent;  
+border-radius:12px; 
+Font-family:'Cantora One';
+ Font-weight:bold;
+ Font-size:14px;
+ Padding:4px;
+ border:none;
+}
+
+
+#chapter-container {
+Background:black;
+display:;
+flex-direction:;
+gap:;
+}
+
+img {
+ width:250px;
+ Height:400px;
+} 
+
+
+
+
+
+#select-font {
+color:black; 
+Margin-bottom:5px;
+margin-top:5px;
+background:white;  
+border-radius:15px; 
+Font-family:'Cantora one';
+ Font-weight:bold; 
+ text-align: right;
+ Font-size:14px;
+ Padding:6px;
+ Border: none;
+}
+
+.frontlist-block {
+	background:white;
+	justify-content:left;
+    padding-left:4px;
+    padding-right:4px;
+    border-radius:15px;
+    margin-top:4px;
+    Margin-left:40px;
+Margin-right:40px;
+}
+
+
+.font-list button {
+color:black; 
+margin-top:2px;
+background:transparent;  
+border-radius:12px; 
+Font-family:'imprima';
+ Font-weight:bold;
+ Font-size:14px;
+ Padding:4px;
+ border:none;
+}
+
+
+
+.text {
+Font-family:'roboto';
+Font-weight:bold;
+Color:black;
+Text-align:Inherit;
+background-color: white ;
+} 
+
+.text.active-1 {
+background-color:black;
+color:silver;
+}
+.text.active-2 {
+  background-color: #fffac3;
+  color: black;
+}
+.text.active-3 {
+  background-color: #3d2b6f;
+  color: white;
+}
+.text.active-4 {
+  background-color:#e0f0ff ;
+  color:black ;
+}
+.text.active-5 {
+  background-color: black;
+  color: white;
+}
+.text.active-6 {
+  background-color: #e9c66c;
+  color: black;
+}
+.text.active-7 {
+  background-image: url('https://res.cloudinary.com/djfmvoomp/image/upload/v1725573410/image_search_1725573219752_xxgr2p.webp');  color: black;
+}
+.text.active-8 {
+  background-image: url('https://res.cloudinary.com/djfmvoomp/image/upload/v1725573410/image_search_1725573204594_v8eopx.jpg') ;
+  color: black;
+}
+.text.active-9 {
+  background-color: #111217;
+  color:#0170BB ;
+}
+
+
+
+
+
+#toggle-button {
+color:black; 
+background:white;  
+border-radius:15px; 
+Font-family:'Cantora one';
+ Font-weight:bold; 
+ Font-size:15px;
+ Padding:6px;
+ Border:none;
+ Margin-bottom:5px;
+} 
+
+.font-1 { font-family:roboto, sans-serif ; }
+.font-2 { font-family: Arial, sans-serif; }
+.font-3 { font-family: Courier New, monospace; }
+.font-4 { font-family: 'roboto Condensed'; }
+.font-5 { font-family: cursive; }
+.font-6 { font-family: Kalam; }
+.font-7 { font-family: Montserrat; }
+.font-8 { font-family: Imprima; }
+.font-9 { font-family:  Pacifico; }
+.font-10 { font-family: 'Open Sans'; }
+.font-11 { font-family: 'Pathway Gothic One'; }
+.font-12 { font-family: Lobster; }
+.font-13 { font-family: 'Comic Neue'; }
+.font-14 {Font-family: 'Cantora One'}
+.font-list { display: none; }
+
+
+.volume button {
+color:black; 
+background:white;  
+border-radius:15px; 
+Font-family:'Cantora one';
+ Font-weight:bold; 
+ Font-size:12px;
+ Padding:6px;
+ Border:none;
+} 
+.foot-link h3{
+	margin-left:50px;
+	Text-align:center;
+   color:#ff1991;
+     font-size:16px;
+    Font-family:'roboto condensed';
+    Font-weight:bold;
+  }
+
+ 
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+
+.body{
+	
+width:100%;
+ background:transparent;
+ Margin-top:10px;
+ margin-bottom:10px; 
+ Padding-bottom:20px;
+ Padding-top:10px;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+ border-radius: 10px;    
+ Text-align:center;
+} 
+
+
+#text-container {
+            
+            text-align: left;
+           white-space: pre-wrap;
+            line-height: 1.5;
+            margin-left: 30px;
+            Margin-right:;
+            Margin-bottom:10px;
+            Margin-top:10px;
+            padding-left: 50px;
+            padding-right: 50px;
+            width:85%;
+            Border:2px #ddd solid;
+            Border-radius:8px;
+            Height:600px;
+            overflow-y: auto;
+        }
+}      
