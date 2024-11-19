@@ -7,13 +7,16 @@ let currentResultIndex = -1;
 // Retrieve the PDF URL from the meta tag
 const url = document.querySelector('meta[name="pdf-url"]').getAttribute('content');
 
+// Retrieve the title from the meta tag
+const title = document.querySelector('meta[name="word"]').getAttribute('content');
+
 // Load the PDF document on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
     loadPdf(url);
 
-    const savedPage = localStorage.getItem('savedPage');
-    if (savedPage) {
-        currentPage = parseInt(savedPage, 10);
+    const savedData = JSON.parse(localStorage.getItem('savedPage'));
+    if (savedData && savedData.title === title) {
+        currentPage = parseInt(savedData.page, 10);
     }
 });
 
@@ -49,19 +52,14 @@ function formatTextContent(items) {
         const currentY = item.transform[5];
         const text = item.str.trim();
 
-        // Skip empty strings or artifacts
         if (!text) return;
 
-        // Add a paragraph break for larger vertical gaps
         if (lastY !== -1 && Math.abs(currentY - lastY) > paragraphThreshold) {
-            textContent += '\n\n'; // Paragraph break
-        } 
-        // Add a line break for moderate gaps
-        else if (lastY !== -1 && Math.abs(currentY - lastY) > lineThreshold) {
-            textContent += '\n'; // Line break
+            textContent += '\n\n';
+        } else if (lastY !== -1 && Math.abs(currentY - lastY) > lineThreshold) {
+            textContent += '\n';
         }
 
-        // Add the item text, preserving spaces between words
         textContent += (textContent.endsWith(' ') ? '' : ' ') + text;
         lastY = currentY;
     });
@@ -101,8 +99,6 @@ function renderPage(num) {
             }
 
             textContainer.innerHTML = textContent;
-
-            // Scroll the text container to the top
             textContainer.scrollTop = 0;
         });
     });
@@ -123,7 +119,6 @@ document.getElementById('next').addEventListener('click', () => {
     }
 });
 
-// Bottom Navigation buttons
 document.getElementById('prev_bottom').addEventListener('click', () => {
     if (currentPage > 1) {
         currentPage--;
@@ -138,7 +133,6 @@ document.getElementById('next_bottom').addEventListener('click', () => {
     }
 });
 
-// Search functionality
 document.getElementById('search').addEventListener('click', () => {
     const searchTerm = document.getElementById('search_input').value.toLowerCase();
     searchResults = [];
@@ -159,7 +153,6 @@ document.getElementById('search').addEventListener('click', () => {
     }
 });
 
-// Navigate to the next search result
 document.getElementById('next_search').addEventListener('click', () => {
     if (searchResults.length > 0 && currentResultIndex < searchResults.length - 1) {
         currentResultIndex++;
@@ -168,7 +161,6 @@ document.getElementById('next_search').addEventListener('click', () => {
     }
 });
 
-// Navigate to the previous search result
 document.getElementById('prev_search').addEventListener('click', () => {
     if (searchResults.length > 0 && currentResultIndex > 0) {
         currentResultIndex--;
@@ -177,25 +169,29 @@ document.getElementById('prev_search').addEventListener('click', () => {
     }
 });
 
-// Save page functionality
 document.getElementById('save').addEventListener('click', () => {
-    localStorage.setItem('savedPage', currentPage);
-    alert(`Page ${currentPage} saved!`);
+    const savedData = {
+        title: title,
+        page: currentPage
+    };
+    localStorage.setItem('savedPage', JSON.stringify(savedData));
+    alert(`Page ${currentPage} of "${title}" saved!`);
 });
 
-// Load saved page functionality
 document.getElementById('load').addEventListener('click', () => {
-    const savedPage = localStorage.getItem('savedPage');
-    if (savedPage) {
-        currentPage = parseInt(savedPage, 10);
+    const savedData = JSON.parse(localStorage.getItem('savedPage'));
+
+    if (savedData && savedData.title === title) {
+        currentPage = parseInt(savedData.page, 10);
         renderPage(currentPage);
-        alert(`Saved page ${currentPage} loaded!`);
+        alert(`Saved page ${currentPage} of "${title}" loaded!`);
+    } else if (savedData) {
+        alert(`No saved page found for "${title}".`);
     } else {
         alert('No saved page found.');
     }
 });
 
-// Go to specific page
 document.getElementById('go').addEventListener('click', () => {
     const inputPage = parseInt(document.getElementById('page_input').value);
     if (inputPage > 0 && inputPage <= pdfDoc.numPages) {
@@ -206,7 +202,6 @@ document.getElementById('go').addEventListener('click', () => {
     }
 });
 
-// Swipe functionality
 let touchstartX = 0;
 let touchendX = 0;
 
