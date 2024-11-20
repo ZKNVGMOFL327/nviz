@@ -99,7 +99,7 @@ Border:none;
 }        
         
         #text-container {
-		text-weight:bold;
+Text-weight:bold;
             font-size: 16px;
             text-align: left;
            white-space: pre-wrap ;
@@ -110,7 +110,7 @@ Border:none;
             width:88%;
             height: 400px;
             Border-radius:8px;
-            Border:1px #ddd solid;
+            Border:1.5px #ddd solid;
             overflow-y: auto;
         }
         #text-container span {
