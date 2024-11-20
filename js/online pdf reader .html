@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Viewer</title>
+    <style>
+        #pdf-canvas {
+            display: none;
+            height: 0px;
+            border: 1px solid #000;
+            width: 100%;
+            max-width: 600px;
+            margin: 20px 0;
+        }
+        #text-container {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            height: 400px;
+            overflow-y: auto;
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            white-space: pre-wrap; /* Preserves spaces and line breaks */
+        }
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+
+<h2>PDF Viewer</h2>
+
+<input type="file" id="file-input" accept="application/pdf" />
+<p>Page: <span id="page_num">1</span> of <span id="page_count">0</span></p>
+
+<canvas id="pdf-canvas"></canvas>
+
+<div id="text-container">Pdf content will appear here.</div>
+
+<button id="prev">Previous Page</button>
+<button id="next">Next Page</button>
+<button id="save">Save Page</button>
+<button id="load">Load Saved Page</button>
+
+<div>
+    <input type="text" id="search_input" placeholder="Search term">
+    <button id="search">Search</button>
+</div>
+<p>Search Results: <button id="prev_occurrence" disabled>Previous Occurrence</button> <button id="next_occurrence" disabled>Next Occurrence</button></p>
+
+<div>
+    <input type="number" id="go_to_page_input" placeholder="Go to page" min="1">
+    <button id="go_to_page">Go to Page</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+<script>
+    let pdfDoc = null;
+    let currentPage = 1;
+    let currentBookName = '';
+    let textContentCache = [];
+    let searchResults = [];
+    let currentResultIndex = -1;
+
+    document.getElementById('file-input').addEventListener('change', event => {
+        const file = event.target.files[0];
+        if (file) {
+            currentBookName = file.name;
+            const fileReader = new FileReader();
+            fileReader.onload = function() {
+                const typedArray = new Uint8Array(this.result);
+                const loadingTask = pdfjsLib.getDocument(typedArray);
+                loadingTask.promise.then(pdf => {
+                    pdfDoc = pdf;
+                    document.getElementById('page_count').textContent = pdf.numPages;
+                    currentPage = 1;
+                    renderPage(currentPage);
+                    loadTextContent();
+                }, reason => {
+                    console.error(reason);
+                });
+            };
+            fileReader.readAsArrayBuffer(file);
+        }
+    });
+
+    function loadTextContent() {
+        textContentCache = [];
+        for (let i = 1; i <= pdfDoc.numPages; i++) {
+            pdfDoc.getPage(i).then(page => {
+                return page.getTextContent().then(text => {
+                    textContentCache[i] = formatTextContent(text.items);
+                });
+            });
+        }
+    }
+
+    function formatTextContent(items) {
+        let textContent = '';
+        let lastY = -1;
+        items.forEach(item => {
+            const currentY = item.transform[5];
+            
+            // Add a line break if there's a significant vertical gap
+            if (lastY !== -1 && Math.abs(currentY - lastY) > 10) {
+                textContent += '\n';  // Paragraph or line break
+            }
+            
+            // Add the item text without extra spaces inside words
+            textContent += item.str.replace(/\s+/g, ' ') + ' ';
+            lastY = currentY;
+        });
+        return textContent.trim();
+    }
+
+    function renderPage(num) {
+        pdfDoc.getPage(num).then(page => {
+            const scale = 1.5;
+            const viewport = page.getViewport({ scale });
+            const canvas = document.getElementById('pdf-canvas');
+            const context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            const renderContext = {
+                canvasContext: context,
+                viewport: viewport
+            };
+            page.render(renderContext).promise.then(() => {
+                document.getElementById('page_num').textContent = num;
+
+                const textContainer = document.getElementById('text-container');
+                let textContent = textContentCache[num] || 'Loading...';
+                const searchTerm = document.getElementById('search_input').value.toLowerCase();
+                if (searchTerm) {
+                    textContent = highlightSearchTerm(textContent, searchTerm);
+                }
+                textContainer.innerHTML = textContent;
+                textContainer.scrollTop = 0;
+            });
+        });
+    }
+
+    function highlightSearchTerm(text, term) {
+        const regex = new RegExp(`(${term})`, 'gi');
+        return text.replace(regex, '<span class="highlight">$1</span>');
+    }
+
+    document.getElementById('prev').addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            renderPage(currentPage);
+        }
+    });
+
+    document.getElementById('next').addEventListener('click', () => {
+        if (currentPage < pdfDoc.numPages) {
+            currentPage++;
+            renderPage(currentPage);
+        }
+    });
+
+    document.getElementById('save').addEventListener('click', () => {
+        const saveData = {
+            bookName: currentBookName,
+            page: currentPage
+        };
+        localStorage.setItem('savedPageData', JSON.stringify(saveData));
+        alert(`Page ${currentPage} of "${currentBookName}" saved!`);
+    });
+
+    document.getElementById('load').addEventListener('click', () => {
+        const savedData = JSON.parse(localStorage.getItem('savedPageData'));
+        
+        if (savedData && savedData.bookName === currentBookName) {
+            currentPage = savedData.page;
+            renderPage(currentPage);
+            alert(`Loaded saved page ${savedData.page} of "${currentBookName}".`);
+        } else {
+            alert(`No saved page for "${currentBookName}".`);
+        }
+    });
+
+    document.getElementById('go_to_page').addEventListener('click', () => {
+        const goToPage = parseInt(document.getElementById('go_to_page_input').value);
+        
+        if (goToPage > 0 && goToPage <= pdfDoc.numPages) {
+            currentPage = goToPage;
+            renderPage(currentPage);
+        } else {
+            alert('Invalid page number.');
+        }
+    });
+
+    document.getElementById('search').addEventListener('click', () => {
+        const searchTerm = document.getElementById('search_input').value.toLowerCase();
+        searchResults = [];
+        currentResultIndex = -1;
+
+        for (let i = 1; i < textContentCache.length; i++) {
+            if (textContentCache[i] && textContentCache[i].toLowerCase().includes(searchTerm)) {
+                searchResults.push(i);
+            }
+        }
+
+        if (searchResults.length > 0) {
+            currentResultIndex = 0;
+            currentPage = searchResults[currentResultIndex];
+            renderPage(currentPage);
+            updateNavigationButtons();
+        } else {
+            alert('Term not found.');
+        }
+    });
+
+    document.getElementById('prev_occurrence').addEventListener('click', () => {
+        if (currentResultIndex > 0) {
+            currentResultIndex--;
+            currentPage = searchResults[currentResultIndex];
+            renderPage(currentPage);
+            updateNavigationButtons();
+        }
+    });
+
+    document.getElementById('next_occurrence').addEventListener('click', () => {
+        if (currentResultIndex < searchResults.length - 1) {
+            currentResultIndex++;
+            currentPage = searchResults[currentResultIndex];
+            renderPage(currentPage);
+            updateNavigationButtons();
+        }
+    });
+
+    function updateNavigationButtons() {
+        document.getElementById('prev_occurrence').disabled = currentResultIndex <= 0;
+        document.getElementById('next_occurrence').disabled = currentResultIndex >= searchResults.length - 1;
+    }
+</script>
+
+</body>
+</html>
