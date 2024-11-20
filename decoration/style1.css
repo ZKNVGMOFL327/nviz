@@ -99,6 +99,7 @@ Border:none;
 }        
         
         #text-container {
+		text-weight:bold;
             font-size: 16px;
             text-align: left;
            white-space: pre-wrap ;
