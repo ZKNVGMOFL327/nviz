@@ -116,7 +116,7 @@ word-spacing:normal;
             Border:1.5px #ddd solid;
             overflow-y: auto;
         }
-        #text-container span {
+       .highlight {
             padding: 1px;
             border-radius: 5px;
             background-color: green;
