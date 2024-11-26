@@ -99,13 +99,12 @@ Border:none;
 }        
         
         #text-container {
-overflow-x: hidden;
 position:relative ; 
 Text-weight:bold;
 Letter-spacing:0;
 word-spacing:normal;
             font-size: 16px;
-            text-align: integrity;
+            text-align: center;
            white-space: pre-line;
             line-height: 1.6;
             margin: 10px;
