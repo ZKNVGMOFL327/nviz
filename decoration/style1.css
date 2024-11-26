@@ -99,6 +99,7 @@ Border:none;
 }        
         
         #text-container {
+position:relative ; 
 Text-weight:bold;
 Letter-spacing:0;
 word-spacing:normal;
