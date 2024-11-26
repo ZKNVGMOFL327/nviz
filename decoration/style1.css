@@ -99,6 +99,7 @@ Border:none;
 }        
         
         #text-container {
+overflow-x: hidden;
 position:relative ; 
 Text-weight:bold;
 Letter-spacing:0;
