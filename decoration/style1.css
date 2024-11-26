@@ -97,7 +97,11 @@ Color:black;
 Background:white;
 Border:none;	
 }        
-        
+
+h2 {
+Font-family:kalam;
+} 
+
         #text-container {
 position:relative ; 
 Text-weight:bold;
