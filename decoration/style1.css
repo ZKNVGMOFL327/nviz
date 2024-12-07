@@ -138,31 +138,21 @@ Margin-right:40px;
 } 
 
 .theme-list button{
-color:; 
+color: red; 
 margin-top:2px;
+Text-transform:uppercase;
 background:transparent;  
 border-radius:12px; 
-Font-family:'Cantora One';
+Font-family:'kalam';
  Font-weight:bold;
  Font-size:14px;
  Padding:4px;
  border:none;
 }
 
-
-#chapter-container {
-Background:#071924;
-display:;
-flex-direction:;
-gap:;
-}
-
-img {
- width:250px;
- Height:400px;
+li  {
+color: transparent;
 } 
-
-
 
 
 
@@ -193,7 +183,7 @@ Margin-right:40px;
 
 
 .font-list button {
-color:black; 
+color: red; 
 margin-top:2px;
 background:transparent;  
 border-radius:12px; 
