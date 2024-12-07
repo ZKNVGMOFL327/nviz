@@ -5,13 +5,13 @@
 }
   	
 body {
-Background:#071924;
+Background:black;
 } 
 
 .body{
 	height:;
 width:100%;
- background:black;
+ background:#071924;
  Margin-top:10px;
  margin-bottom:10px; 
  Padding-bottom:20px;
@@ -151,7 +151,7 @@ Font-family:'Cantora One';
 
 
 #chapter-container {
-Background:black;
+Background:#071924;
 display:;
 flex-direction:;
 gap:;
