@@ -1,0 +1,836 @@
+<!--bookshelf -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+		<title> </title>
+		<meta name="" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6499590870582661"
+     crossorigin="anonymous"></script>
+  <style>
+  	
+  /*universal styles setter*/  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    Font-family:'roboto condensed';
+    Font-weight:300px;
+    font-size:16;
+    text-decoration: none;
+} 
+
+body { 
+  text-decoration: none !important;
+  -webkit-tap-highlight-color: rgba(7,21,36,0.5); /* removes hover glow when links are tapped*/
+	background-color:#071924;
+	color: white;
+	font-weight: bold;
+	font-size:15;
+    Font-family:'times new roman';
+    Font-weight:300px;
+	text-align: center;
+  justify-content: center;
+} 
+ 
+    
+  
+    
+  #logo {
+    display: block;
+    Justify-content:center;
+    Align-items:center;
+    Text-align: center;
+    Margin-bottom:;
+    Height:40px;
+    Width:100%;
+    Text-transform:uppercase;
+    -webkit-text-stroke: 0px black;
+
+    Font-weight:bold;
+    text-shadow:
+
+    0 0 10px #000000,
+
+    0 0 20px #000000;
+    Background:;
+  }
+    /* bookshelf nav */
+    
+    #nav-bar {
+  display: flex;
+  Margin-left:60px;
+  Margin-bottom:30px;
+  align-items: center;
+}
+
+.nav-item.active {
+	Border-radius:6px;
+	padding:6px;
+  background-color: black; /* or any other visual indicator */
+}    
+
+
+#nav-scroll-box {
+  overflow-x: auto;
+  white-space: nowrap;
+  flex-grow: 1;
+  max-width: 80px; /* adjust max-width as needed */
+}
+
+#nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  Font-size:15px;
+  Margin-bottom:-12px;
+  Color:#ff1991;
+  display: inline-block;
+  margin: 0 8px;
+}
+
+.hidden {
+  display: none;
+}
+
+.content {
+  Margin-top:-10px;
+  /* Add styles for content divs */
+}
+
+
+#content-container  {
+	margin-bottom: 1px;	
+	margin-top:;
+  margin-left:0.2em;
+  margin-right:0.2em;
+}
+
+.book-container {
+   Margin-left:10px;
+
+  Margin-right:10px;
+	background-color: tan;
+ align-items: center;
+	padding:6px;
+	border-radius: 11px;
+	font-weight: bold;
+	color: white;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+    
+ .bookshelf-header {
+   Text-transform:uppercase;
+ Color:white;
+ Font-family:'Kalam';
+ Font-size:22px;
+ Margin-bottom:5px;
+ Margin-top:5px;
+} 
+
+.book-shelf {
+	display: grid;
+
+	grid-template-columns: repeat(2, 1fr);
+	gap: 10px;
+    padding-left:4px;
+    padding-right:4px;
+	
+}
+
+.book {
+position: relative;
+      display: inline-block;
+      width:;
+	background-color: black;
+	padding: 0px;
+	border: 1px solid #ddd;
+	border-radius: 11px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+	text-decoration: none;
+}
+
+.book img {
+	width: 100%;
+   Height:230px;
+	border-radius: 10px;
+}
+
+.book h3 {
+position: absolute;
+      bottom:0;
+      width: 100%;
+background-color: rgba(0, 0, 0, 0.8);
+Padding :6px ;
+	font-size: 16px;
+border-radius: 10px;
+	color:white;
+	margin-bottom:0;
+  Font-family:'roboto';
+    Font-weight:300px;
+  Text-transform:capitalize;
+	margin-top:0;
+	text-align: center;
+}
+    
+    
+    /*bookshelf nav end*/
+    
+    
+    
+  #t-text {
+    Padding:4px;
+    Background:;
+    font-size: 30px;
+font-family: "cantora one";
+Margin-bottom:-5px;
+Padding-bottom:-10px;
+Text-align:center;
+Color:white;
+
+    }  
+    
+    
+
+
+
+ .foot-link h3{
+	margin-left:50px;
+	Text-align:center;
+   color:#ff1991;
+     font-size:16px;
+    Font-family:'roboto condensed';
+    Font-weight:bold;
+  }
+    
+    
+
+  
+ .top-header {
+ 	width:100%;
+   Background:#242324;
+   Padding-top:2px;
+   Padding-left:;
+   Padding-right:;
+   Margin-top:;
+   Margin-left:;
+   Margin-righ:;
+} 
+
+
+
+
+/*ANDROID MEDIA SETTING*/
+
+@media only screen and (max-width: 768px) {
+    
+		
+}
+/*END OF MOBILE MEDIA SETTING*/
+
+
+/*PC MEDIA SETTING*/
+
+ @media only screen and (min-width: 769px) and (max-width: 1024px) {
+	.book-shelf  {
+		grid-template-columns: repeat(4, 1fr);
+}
+   
+   
+   
+   .Search-text {
+			Text-align:;
+          Margin-bottom:1px;
+          Margin-top:1px;
+	display:flex;
+	margin-right:20px;
+	padding-left:335px;
+} 
+   
+   .top-header {
+   Background:#242324;
+   Padding-top:;
+   Margin-top:;
+} 
+ 
+   
+#content-container {
+margin-top:  10px;
+margin-left:  3em;
+margin-right: 3em;
+ }
+
+    
+   
+ .body {
+  Margin-top:;
+  Margin-left:;
+  Margin-right:;
+ } 
+}
+/*END OF PC MEDIA SETTING*/
+    </style >
+  
+<!--END OF CSS-->
+  
+  
+   
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cantora+One&effect=neon|outline|emboss|shadow-multiple" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Imprima&family=Kalam:wght@300;400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Imprima&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+  
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+	
+	
+  <body>
+	
+     <div class="top-header">
+     <div id="logo">
+     <div class="font-effect-outline" id="t-text">
+NOVELGASM</div>
+     <svg width="100%" height="10" margin-bottom="-10px">
+ <line x1="0" y1="5" x2="100%" y2="5" style="stroke:silver;"/>
+  </svg></div>
+
+     
+	
+  
+
+   
+   <!-------------NAV BAR------------------------------------------>
+<div class="nav-bar" style="margin-bottom:-10px; margin-top:-10px;">
+	
+<ul >
+	<li class="nav-link dropdown">
+	<a href="#" class="dropdown-toggle"> 
+<button class="dropmenu" style="Font-family:'roboto condensed'; Font-weight:bold; color:white ; background: rgba(0,0,0,0); width:; 
+font-size:25px; border:none; padding:2px; border-radius:8px;margin-bottom:1px;margin-top:8px;" ><i class="fa fa-th-list" aria-hidden="true"></i></button> </a>
+<ul class="dropdown-menu">
+
+  <br>
+<li class="nav-link"><a href="../index.html">Home</a></li>
+<li class="nav-link"><a href="../search_genre.html">Genre</a></li>
+  <li class="nav-link"><a href="Quiz.html">Quiz</a></li>  
+  <li class="nav-link"><a href="random.html">Random</a></li>
+<!--<li class="nav-link"><a href="page/market.html">Store</a></li>-->
+<br>
+  
+
+
+</ul>
+</li>
+</ul>
+</div>
+</div>
+     
+<style>
+.nav-bar {
+	margin:20px;
+	color:red;
+	text-align:left;
+background-color:;
+padding: 1em;
+}
+
+.nav-bar a {
+  Text-transform:capitalize;
+color:white;
+font-family:'roboto condensed';	
+Font-size:16px;
+}
+
+.nav-bar ul {
+list-style: none;
+margin: 0;
+padding: 0;
+display:block ;
+}
+
+.nav-link {
+	display :;
+margin-right: 20px;
+position: relative;
+}
+
+.dropmenu:after {
+content: "";
+font-size: 10px;
+margin-left: 5px;
+}
+
+.dropdown-menu li  {
+  display: block;
+}
+
+.dropdown-menu.hidden {
+  display: none;
+}
+</style>
+<script>
+// Add event listener to dropdown toggle
+document.querySelectorAll('.dropdown-toggle').forEach((toggle) => {
+  toggle.nextElementSibling.classList.add('hidden'); // hide initially
+  
+  toggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    const dropdownMenu = toggle.nextElementSibling;
+    dropdownMenu.classList.toggle('hidden');
+  });
+});
+</script >
+<!-------------------------NAV BAR END---------------->
+   
+	
+
+
+<div style="color:black;
+    Font-family:'kalam'; Margin-left:; Margin-right:; width:100%;
+    Font-weight:bold; font-size: 12px; text-align: center; background: #E6EBEF; border-radius:;  box-shadow: 0 0 10px rgba(0, 0, 0, 2);">Read Books In Convenience </div>
+
+  <div class="search-text">
+<input id="text-div" type="text" placeholder="Search...">
+<button id="search-btn">Search</button>
+</div>
+     <style>
+		.Search-text {
+			Text-align:;
+          Margin-bottom:1px;
+          Margin-top:1px;
+	display:flex;
+	margin-right:20px;
+	margin-left:35px;
+} 
+	#text-div{
+      Font-family:'roboto condensed';
+           Margin-bottom:10px;
+          Margin-top:10px;
+		border:none;
+		border-radius:4px;
+	padding:10px;
+	background:#2C2E30;
+	color:white;
+	} 
+	
+	#search-btn {
+      Font-family:'roboto condensed';
+      Margin-bottom:10px;
+          Margin-top:10px;
+      Padding:8px;
+		background:black;
+	color:white;
+	border-radius:4px;
+	border:none;
+	} 
+</style>
+     <script>
+const textDiv = document.getElementById('text-div');
+const searchBtn = document.getElementById('search-btn');
+
+searchBtn.addEventListener('click', () => {
+const searchTerm = textDiv.value;
+window.location.href = '../search_Genre.html?search=' + encodeURIComponent(searchTerm);
+});
+</script>
+  
+
+  <!---------------Bookshelf----------->
+     
+  <div class="bookshelf-header">
+   RANDOM
+  </div>
+<!-- Navigation Bar -->
+<div id="nav-bar">
+  <div id="nav-scroll-box">
+    <ul id="nav-list">
+      <li class="nav-item" data-content-id="content-1">1</li>
+    <li class="nav-item" data-content-id="content-2">2</li>
+     <!--<li class="nav-item" data-content-id="content-3">3</li>
+      <!-- Add more nav items as needed -->
+    </ul>
+  </div>
+</div>
+
+<!-- Content Container -->
+<div id="content-container">
+	<!------------------------------->
+<div id="content-2" class="content hidden">
+<section class="book-container" >
+		<div class="book-shelf">
+<!------------------------------------	
+<div class="book">
+<img src="" alt="**" onclick="window.location.href='../book/novel/'">
+				 <a href="../book/novel/"> <h3> </h3></a>
+			          </div>
+    <!----------------------------------
+	<div class="book">
+<img src="" alt="**" onclick="window.location.href='../book/novel/'">
+				 <a href="../book/novel/"> <h3> </h3></a>
+			          </div>
+    <!---------------------------------- 
+	 <div class="book">
+<img src="" alt="**" onclick="window.location.href='../book/novel/'">
+				 <a href="../book/novel/"> <h3> </h3></a>
+			          </div>
+    <!---------------------------------->  
+	
+<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdppl-XWhkvAxYjziLT6KwsYrzMPlJB8GCyYKPCXAcGdw69FZ_lUlGfnGhlFAW29R4oGzQ2ulOrAGUvA6B4solcMGsX1j3IKTmm6-ACZgkU3AcOf8ALu64mQIdt5UJc4XaPZIpt7er1lxKDNBZXSPEiz19qjjm9zAmeEzJz2RUJkmZ6Hmrd-55bR8c7RH4/s200/image_search_1731914061037.jpg" alt="**" onclick="window.location.href='../book/novel/The_Eyes_of_the_Dragon_A_Novel_-_Stephen_King_x1ticj.html'">
+				 <a href="../book/novel/The_Eyes_of_the_Dragon_A_Novel_-_Stephen_King_x1ticj.html"> <h3> The eyes of Dragon </h3></a>
+			          </div>
+    <!---------------------------------->  
+	<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjN6tfdbkeKvs4xBlLsKjXdSgGFtdTSMSHvwAqPODRKFL5g83J2j0LYZnEWEzjXiX1t18j8r8y4oGswoZY5lMQkJTNqcYtQwgCxpWfeUJ7JiJ-tY5h56hnXdciHvcQOBCdZOklkATiLcW3FkJrs-5XhQHx-vpw3RsbtyXiBAGU-jzlXZ05bjgD-NXovnFSc/s200/image_search_1731914041023.jpg" alt="**" onclick="window.location.href='../book/novel/You_Like_It_Darker_-_Stephen_King_otqp69.html'">
+				 <a href="../book/novel/You_Like_It_Darker_-_Stephen_King_otqp69.html"> <h3> you like it darker</h3></a>
+			          </div>
+    <!---------------------------------->  
+	 <div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh6S965ab7qrqmruGsa9ceN2JpfDmWNho1dAkgWnHdJu9ey002h0fRlD7Cb4IDnQu3vBEC0qtaN3fdSMdRvYX277xRgHHGR3DoUvz6OxVzMgf94_L6hU3QCHyoUB5IigeIsgH4SNoirkFoiOM8ZwHZfa31d5xGah-SEehQ7aiPZlHluK2cvMUeOXTMwoRRt/s200/image_search_1731913303138.jpg" alt="**" onclick="window.location.href='../book/novel/twenty_years_after_kse9va.pdf.html'">
+				 <a href="../book/novel/twenty_years_after_kse9va.pdf.html"> <h3>twenty years after  </h3></a>
+			          </div>
+    <!---------------------------------->  
+	<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgI29v5HQnKfjq3VtNkeiOoIv6DV4fOwa0bavo4OzF4OK7lyNsUxmFZ8Bk1swRvQnWKpPk_fELaBEOlkVYF5J9S9YFDFt_YJnHyrJrcWT8V1iJV_aoyZtGRX7vm5Vuyrp0PvLhyphenhyphenX0RRKWL36bDVXAJyenaERl9PoOdPJ8FC4BsCRq2buCLXdyY-KrX9h1yo/s200/image_search_1731913129153.jpg" alt="**" onclick="window.location.href='../book/novel/two_dead_wives_hntlr0.html'">
+				 <a href="../book/novel/two_dead_wives_hntlr0.html"> <h3> two dead wives</h3></a>
+			          </div>
+    <!---------------------------------->  
+	<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLRuZZ_KUx3en72Br92hWHJt38sNBbvuS4tlwsy6WVA34i7uXrrjuuw1RXuo3X7XpO7qmsEZrX579EMsVF-sVYrHbqcDkLllDcbSY560hiNCawnFnk02qUprb50F3_qevXCrwY4bTlL9UuBGFWNz7dmToC_B6NbvtafFF7d5VlmnADWwO3mPYLkqxzFB40/s200/image_search_1731913085330.jpg" alt="**" onclick="window.location.href='../book/novel/william-shakespeare_julius-caesar_xr2fnz.html'">
+				 <a href="../book/novel/william-shakespeare_julius-caesar_xr2fnz.html"> <h3> Julius Caesar </h3></a>
+			          </div>
+    <!---------------------------------->  
+	<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjXxKm3aK1uEug0zooT6T0rd1RMCJphO_xOGllbwXnSh_8SsZPq8iy28kRMelxAVb1tA3cazM9KXdWipiHgEiT-kY7VGHRrHG_KiR_8C47db7RmKso-ej5ZPgQCDsMrhqkc1WtE-EqfD6Z9lClEL5RKx315g-yS2T3r_mdcTiIleV1u1U2cgNJKqMfS2M0l/s200/image_search_1731913058044.webp" alt="**" onclick="window.location.href='../book/novel/That_Night_in_the_Library_-_Eva_Jurczyk_i27ftd.html'">
+				 <a href="../book/novel/That_Night_in_the_Library_-_Eva_Jurczyk_i27ftd.html"> <h3> that night in the library </h3></a>
+			          </div>
+    <!---------------------------------->  
+	 <div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgg3wUShj6Q97SrOZ0tG3oZOv1S2gpByMPG_MST3kYrXIYF9z3OiKkZFr1JPoa-_vFwTDwStTCwybDyVVn4zWG4VA4QZy3rZfH1yqXhdC7gX-OVLiXBnCxUoh4Ui4VpN-QDCO_KSfhlWJ_-BXHSYyOO25qQ1rSgzjouoxNfrq8vWPPYcyQ-OibgDdVcBqDS/s200/image_search_1731912881091.jpg" alt="**" onclick="window.location.href='../book/novel/the_devil_is_an_ass_osgvyh.html'">
+				 <a href="../book/novel/the_devil_is_an_ass_osgvyh.html"> <h3>The devi is an ass </h3></a>
+			          </div>
+    <!---------------------------------->  
+	 <div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWQxRKNAiePWNLFtfvYbCKz3he1P7h79tDxQwL59kxH-Cx-WiWXMlryJWNcU36WCtEjXbbrtPy_oBnousz1oodKEenhSr9O-0iHi58eMo14RI1i1f_OjcbJQOVuWkdFZSg7IyoxVEEKQHfYfbDPwJRfA8Vd9owuAk6TSkOgww7giFsaHKAs3S62sHtS-3X/s200/image_search_1731912821001.jpg" alt="**" onclick="window.location.href='../book/novel/Stephen_King_-_1991_-_Needful_Things_t8vhai.html'">
+				 <a href="../book/novel/Stephen_King_-_1991_-_Needful_Things_t8vhai.html"> <h3> needful things</h3></a>
+			          </div>
+    <!---------------------------------->  
+	<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhj3LBV44dxNcd6RblZ__E2v9cfqOUHaJLHTrwJHpmVnxpJBoiI6Fev9YhVZlOFjIodFzKKuJdlZsQU7ZMMo6w5d5pGNxJuzpfggVbEbl0wci7k9gJFGLJGt7ChzeIbUmKmHeTOfo7KyLrZjjS0fRr-bEJeVYPRaZ6i5Kpzg69n5bA6iL1LiYC3AUAnZ9I9/s200/image_search_1731912779673.jpg" alt="**" onclick="window.location.href='../book/novel/the_terror_A_Mystery_vausfm.html'">
+				 <a href="../book/novel/the_terror_A_Mystery_vausfm.html"> <h3>The terror </h3></a>
+			          </div>
+    <!---------------------------------->  
+	<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCBWH6Ugab4S8pEHExClly8Za-Ir2DS1XnX6IoLSUj-aZjfLAg-Z6inyFiNOAUJd509KmkN8wloyOR-TNWMUzpCOwlAGskfT2sb99ALcF1YS1nLxK4CN11FvZFRwjPueOF_dAukAF9K30o0o5TO4OQHO9_MHFU3GDtt9y4K_vdl2AVhthMxl8Zs6Ibkgnw/s200/image_search_1731912465285.jpg" alt="**" onclick="window.location.href='../book/novel/Stephen_King_-_1989_-_The_Dark_Half_lkpfol.html'">
+				 <a href="../book/novel/Stephen_King_-_1989_-_The_Dark_Half_lkpfol.html"> <h3>The Dark half </h3></a>
+			          </div>
+    <!---------------------------------->  
+	<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjt74t3MQp5ERx1WKvt58TV1dBKCZDwwXxPF8KcSV5fYaXmzI0mi0IAWomnAWsr9BciJhw7JRzf4l368IEuM_rWZbKWiTxT5WuuhWp9laCIgiEDtjGaarBKYFUx2_T57M5_Wv8u8hklzOUhz8NfAvRAxM1VSdMCiqw3eS6tg5PlAHp6G5AL7rwejlfPylSh/s200/image_search_1731912437473.jpg" alt="**" onclick="window.location.href='../book/novel/Tender_is_the_night_bcodzg.html'">
+				 <a href="../book/novel/Tender_is_the_night_bcodzg.html"> <h3>tender is the night  </h3></a>
+			          </div>
+    <!---------------------------------->  
+	<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkhq5FX1ECAffwB3kSp6EfAxP7FxMq5feJevAlqAvJ4clSmwHIheWutnm_hSFvHtOoWFVy20PAwY2QY54oWQb0KP4Rk0LZsE24NJjhxq5PYJGzun_bWZJwFKhh2N_6Cn1TxFVwGULoJvjLQRbg5ANXfAO_rOT2zIDp7xk45c_1P9z3uUWhVRk7gVkm72uM/s200/image_search_1731912355823.jpg" alt="**" onclick="window.location.href='../book/novel/Stephen_King_-_1987_-_The_Tommyknockers_zabiaf.html'">
+				 <a href="../book/novel/Stephen_King_-_1987_-_The_Tommyknockers_zabiaf.html"> <h3>The Tommyknockers  </h3></a>
+			          </div>
+    <!---------------------------------->  
+	<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEipY_2NaNM5P6FvKXgaWxZWT8eTWHZRcQKgZBStMGCL7AY8vKRuRRdxeZJ-RAv0_cYhg3ktf1CIb3fla48UoD7OXc5ezBn8fDt_WbLti7JrBG5nbRA4D4m1tT9uNWXf1atsI5eIvrnyY-K0XzE7By499ppX1y0j4fyDBu1FxEHfFXh-L1wPFMD7mfycnD8g/s200/image_search_1731912271962.jpg" alt="**" onclick="window.location.href='../book/novel/stevenson_mendiants_dleqdv.html'">
+				 <a href="../book/novel/stevenson_mendiants_dleqdv.html"> <h3> mendiants</h3></a>
+			          </div>
+    <!---------------------------------->  
+	<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgpweEqkKVd386x4i7rh8EPVMqIKf1eZzNVFqaalPH2WyZPiaD8TyL38l6V9430mLvEZ8xsevweEVJ3-lJjTP4t4-fKM4a6QAf_lON-QcKPFj_bYlGn2Vi892qe2zMAhDACqGgREaqCpmQrLiusQEQLt8wiYYd7U4TGYr9pMs325chE9mUdKkemiHLDmd6D/s200/image_search_1731906384519.jpg" alt="**" onclick="window.location.href='../book/novel/stephen-crane_the-red-badge-of-courage_vwuthx.html'">
+				 <a href="../book/novel/stephen-crane_the-red-badge-of-courage_vwuthx.html"> <h3>The red badge of courage </h3></a>
+			          </div>
+    <!---------------------------------->  
+	 <div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi-3Xb7iakIaGzl27HROGtjrX7E3m9LEQkpJH-XnxjdaHNX0v4wYshA82kmwEoiyVAVvhGVEkccsMenIZgQY3pyjKJlpSGaldWqOKKLfvtsE5d1Ppdl_WmoWtbUwsuwRnV3KB4bEJ1Lv4A73l-wuZHnXJd-IcNKllOgoAzRNxRU_DChjklkhGMzR71UJCb3/s200/image_search_1731906040932.jpg" alt="**" onclick="window.location.href='../book/novel/Cycle_of_the_Werewolf_xyuv6g.pdf.html'">
+				 <a href="../book/novel/Cycle_of_the_Werewolf_xyuv6g.pdf.html"> <h3>cycle of the werewolf  </h3></a>
+			          </div>
+    <!---------------------------------->  
+	<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAQLJIVfS6OamBXOuFJ-1mIQFhg4G6DFFyinfMILlMf9quS559NxOpczIKEJU_ORmcEzoJ2hqsKaZ8sC-mOURnsa9wUpChmzipfFaLX20091_0DgaISNnBLtk6Ek-dkQvRxFrUkyNVVlFMrROORjRoNI9QK2mOWOVH-rRgNv3czOj8D-nsVrm7ygg2RlNt/s200/image_search_1731906013389.webp" alt="**" onclick="window.location.href='../book/novel/Seven-Swords_ctpdwl.html'">
+				 <a href="../book/novel/Seven-Swords_ctpdwl.html"> <h3> seven swords</h3></a>
+			          </div>
+    <!---------------------------------->  
+	<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwQ4hsSHGvb_VgjerKM7pyZ-SuCWcSlr9hiRHyjDMKJYRaFoQKwFW7J4fLiUFLY_rQ0UQj0yubXqbhE6JYSbuCdtdOky2-bdEXzBR8lckYQH00-I3gI3MejZdrybqRiUWqspFLiHIn7Hnt9yZEUNUZH29HM0gYOuw4cvnESjG-b00Vt2YIBAGfTFJw07oX/s200/image_search_1731905980741.jpg" alt="**" onclick="window.location.href='../book/novel/dine_the-benson-murder-case_racocy.html'">
+				 <a href="../book/novel/dine_the-benson-murder-case_racocy.html"> <h3> The benson murder case</h3></a>
+			          </div>
+    <!---------------------------------->  
+	<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjnO-x7Vg4Rnq_Gzvz3X6OocOVX8UMP4WwCxNKOqIlHOG1hA6ONOjNFbYZJLfXg_DcP0vp-Z9KZBcebS_QOZMMPT2qL-TGO5w5kKxKtfIYtfI3iHxVSc9uQaZ8TZ_rqy4e70SNssXqNxiJ6TMtRu3AOyKfNXYSp2cE17b-4lHiS2WbcyVncIVFJ9WzX-ENU/s200/image_search_1731905922799.jpg" alt="**" onclick="window.location.href='../book/novel/Queen_of_spades_ao0vkh.pdf.html'">
+				 <a href="../book/novel/Queen_of_spades_ao0vkh.pdf.html"> <h3>queen of spades  </h3></a>
+			          </div>
+    <!---------------------------------->  
+	 <div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKnqpIUXtn0nsFbwfxUWHETEZ462psKqYTL7mHt7tVVhNegcADjMZuxmX1eAKFIYNkr-lgRigBHC6KBjHN9McC6YnR5G4iNgxxLDdWrjRKmlk88igfHaZ9JZgJCljWNR6wmCpqDmRwNabD7Q1hHfiw0taiyeZKbbDUXjLnGHz-TFh-BuJ7CtH82MNBysXl/s200/image_search_1731905874211.jpg" alt="**" onclick="window.location.href='../book/novel/ruby_Roland_trwxmb.pdf.html'">
+				 <a href="../book/novel/ruby_Roland_trwxmb.pdf.html"> <h3>ruby Roland </h3></a>
+			          </div>
+    <!---------------------------------->  
+	<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgaksq-LWH5Vz3dRXPpScc-Hq8RFPtlq1K3SEbDCeXShT_7CWrtTXCe7Ufs7XmevTM_hJ4h7IeGOFsgwZjT6XXgWSlGGainXG5Ck7UFb3JcDVD8ZzFdR_kF-rGEQA9Eu_Zo-bUbF95-2rBbc0mgilW5_evtE22fQLcgxYwY8iee7LJfhIqWkOJnvNAF2nDK/s200/image_search_1731905768161.jpg" alt="**" onclick="window.location.href='../book/novel/Prose_Francine_-_Anne_Frank_The_Book_The_Life_The_Afterlife_c07l6j.html'">
+				 <a href="../book/novel/Prose_Francine_-_Anne_Frank_The_Book_The_Life_The_Afterlife_c07l6j.html"> <h3> The book, the life, the afterlife </h3></a>
+			          </div>
+    <!---------------------------------->  
+	 
+    <!---------------------------------->  
+</div>
+</section>			
+</div> 
+  
+  
+  <div id="content-1" class="content">
+<section class="book-container" >
+		<div class="book-shelf">
+<!--------------------------------------->	
+<!-- <div class="book">
+<img src="" alt="**" onclick="window.location.href='../book/novel/'">
+				 <a href="../book/novel/"> <h3> </h3></a>
+			          </div>
+    <!---------------------------------->  
+	<!-- <div class="book">
+<img src="" alt="**" onclick="window.location.href='../book/novel/'">
+				 <a href="../book/novel/"> <h3> </h3></a>
+			          </div>
+    <!---------------------------------->  
+	<!-- <div class="book">
+<img src="" alt="**" onclick="window.location.href='../book/novel/'">
+				 <a href="../book/novel/"> <h3> </h3></a>
+			          </div>
+    <!----------------------------------
+	 <div class="book">
+<img src="" alt="**" onclick="window.location.href='../book/novel/'">
+				 <a href="../book/novel/"> <h3> </h3></a>
+			          </div>
+    <!---------------------------------- 
+	<div class="book">
+<img src="" alt="**" onclick="window.location.href='../book/novel/'">
+				 <a href="../book/novel/"> <h3> </h3></a>
+			          </div>
+<!---------------------------------->  
+
+
+
+<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5uMYjvP8qaKurTxdaqtxb4SkKagRCKNdYgfdHQqWN-MvL1iWwg-fiu4WzoTUbNbZVvdEWrL-Vw2rQrLt7bbhzYdiIqh4DwJsyjyiwzAlCWWwEXk8Dg5huS8Be1bD3eeGtYwKBoGtWBXQG-KDzV7ZqHXTy53D1cyqSIQRkN2eUPX-Cq98ofHJtVN0fQlx5/s200/image_search_1731927030163.jpg" alt="**" onclick="window.location.href='../book/novel/A-Lad-of-Grit_z43lmy.html'">
+				 <a href="../book/novel/A-Lad-of-Grit_z43lmy.html"> <h3> A lad of grit</h3></a>
+			          </div>
+    <!---------------------------------->  
+	<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhbrBvZtwXqeafK5NnltZXZacI4Rmb5wRqXpHByvfJoQ9JfT6uyVLAggRXbqY5cENfuOg-hZPmIcbAha-5dXdNKg7arRePDkNxrFfVnJdsN6-F_9u6dRs_H0ClXbjimCLpAfnsuFVbdPeVE_8otIvaj9sqKjxzoAkebnnuDQg3VCo2A-eg_MztGBRtLiOuL/s200/image_search_1731926965828.jpg" alt="**" onclick="window.location.href='../book/novel/a_Nightmare_on_Elm_Street_Protege_Tim_Waggoner_scm8ki.html'">
+				 <a href="../book/novel/a_Nightmare_on_Elm_Street_Protege_Tim_Waggoner_scm8ki.html"> <h3>A nightmare on elm street - protégé  </h3></a>
+			          </div>
+    <!---------------------------------->  
+<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgoLcI4qTnbaJWN98tmzwyswE5kw4o_SA0H4oSFnD3SQd0-fnTjogtl2OhV_Pgeb4H5cFU8Z5Gow_6wPdelCrZJoINKJNfS1LtR8-smBaaAY-jvoSOsLYm98mqYA7ZSXFiX9G1cypP-mkt7aUM7Y8rBB-DqTCTZtehwBVhyphenhyphenznIKdNddqebHYMW7UhcUcsZL/s200/image_search_1731914334591.jpg" alt="**" onclick="window.location.href='../book/novel/For-Name-and-Fame_skmovb.html'">
+				 <a href="../book/novel/For-Name-and-Fame_skmovb.html"> <h3> for name and fame</h3></a>
+			          </div>
+    <!---------------------------------->  
+	<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhI7RVD15m0GuFepfWOeoeNut42XdcSBHT_GxgcSiC3qZNyyNxXoI7Bw7YUUNkNWcZ539iqHEedtJnyxPVRUzGV7aIKtHbApTQ55SODRCO8nvwFAcg8dmFlP4TsZ9dGpkuaxNSqxo79xpZ0ud_99CXwN_CU1_MKgetbKeRy529pFavkhz_7sTW3_rXpoCVy/s200/image_search_1731928317917.jpg" alt="**" onclick="window.location.href='../book/novel/Spice-and-the-Devil_s-Cave_cqhm.html'">
+				 <a href="../book/novel/Spice-and-the-Devil_s-Cave_cqhm.html"> <h3> spice and the devil's cave </h3></a>
+			          </div>
+    <!---------------------------------->  
+<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjK8NxWglwOwBHMDWMFFmwFjKqPohCD9RXWclD4EQ9fIE8guvhFfrFTdQ_YAerf822_4h6WG4tT6evDw50QZh8BukEbpwje0zLYytdmbhupWYmWtiUPXYdIAw8uHbeEDNlZGAOrvvU6YjQHWaqPinXtv6vrSV9PpgJZUxWX4vHd0P1W6okupMOVEHxJ5Msf/s200/image_search_1731928285640.jpg" alt="**" onclick="window.location.href='../book/novel/The-Boy-Ranchers-at-Spur-Creek_ozqm.html'">
+				 <a href="../book/novel/The-Boy-Ranchers-at-Spur-Creek_ozqm.html"> <h3> The boy ranchers at spur creek</h3></a>
+			          </div>
+    <!---------------------------------->  
+	<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEidZGSbVzxXhW8cBH5XIsstNZARCx7J9ou5Pf-RIWpanEGT6TyI9Mal3_ueep-62TZmoH6-0T7VC5lB_lBvE8nHkVXG89o7Ss7hr-9Sqj8xp10gZGg7QyU_72iDpyfbobPRTOISNg0SW49xipWclz1vV8QFEfSAGI2gyrHhPpSQui-_agd9raVq69XoWGME/s200/image_search_1731928235014.jpg" alt="**" onclick="window.location.href='../book/novel/Romance-Island_b6ewzw.html'">
+				 <a href="../book/novel/Romance-Island_b6ewzw.html"> <h3> romance island</h3></a>
+			          </div>
+    <!---------------------------------->  
+<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEipAm8cJWZ_fStSuAxLiLNcMD9cqXmOD2JzR48dkQxYOpoHByWyJ-WFaAKfmbJpIxJ0JnSc02mc4KOqvdnNblueVvPAdhwUqleiruBx_kWBS4DiPfV50fUaKqw37WU61uOC-9zBcDFhtXXwe2cd-lWjk7yXIXNuEm8BIftglvpzOdNHqwcejq4I3hAwJzhI/s200/image_search_1731928205067.jpg" alt="**" onclick="window.location.href='../book/novel/Simon-Called-Peter_ogjbdv.html'">
+				 <a href="../book/novel/Simon-Called-Peter_ogjbdv.html"> <h3>Simon called peter </h3></a>
+			          </div>
+    <!---------------------------------->  
+	<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGWGZk_dzqPfVgkQNwLwqRCT_J3xlxu-N8KMnL3GT3BD6GqJrOtUm9hlEhz4XM0tqX9yMgMOcJGlCT8eoJC8Qy6Vd6QPNll86XT0J_B9p4zVFdJgFCxvYe0a6_8XsQfZmIqUEpZ9v47NsSI_c2oyz-NVj8gi0uIGXJ1zu_ZUpCF-U2RZZbZvl0fZ2mZ-py/s200/image_search_1731928062171.jpg" alt="**" onclick="window.location.href='../book/novel/Nobody_s-Boy_ijl4nn.html'">
+				 <a href="../book/novel/Nobody_s-Boy_ijl4nn.html"> <h3>nobody's boy </h3></a>
+			          </div>
+    <!---------------------------------->  
+<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhk_48ZkkBNKaJcMXZ1lqdC7DJUJ3RAKKbruxQX8hbF0tIov3l1ba6ex3utrFybb_Um3WqtITilcyhayxd89rIHEo8mZbvyquV3oLwXtZA7i9DZl16REH2NHNpkYEL3iyduSIgmkuZXtQY6eZ7STAtRNcdMCtjvxFtxfGq1faVrjMmd2HGygj1tDHPRSFZD/s200/image_search_1731928012708.jpg" alt="**" onclick="window.location.href='../book/novel/Saint-Martin_s-Summer_oxuf0d.html'">
+				 <a href="../book/novel/Saint-Martin_s-Summer_oxuf0d.html"> <h3> saint Martin's summer </h3></a>
+			          </div>
+    <!---------------------------------->  
+	<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjYusUDfDdykT4FWVAD-405LweK8Woo7RgRkrm9t6-hps-ZOFvvK04xO6hkT_VPRC13qWgjhIHIg95f9NW_RxLZR16rEJPh6JZTSknkLOY3xX8oafcRBBzOVymzB_ry1Py7kNLpvOOD4yIUyiZMABGQ7oqJfrqjXiv3BivNF1-DO1eIKjbsPiwwEYKqp7Xe/s200/image_search_1731927977259.jpg" alt="**" onclick="window.location.href='../book/novel/Panther-Eye_joz0c8.html'">
+				 <a href="../book/novel/Panther-Eye_joz0c8.html"> <h3> panther eye</h3></a>
+			          </div>
+    <!---------------------------------->  
+<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhmxTKEI2NhIaRNlHQQ_9xIhotWuAcCrEJp76vYS3uOkS_K6T3caAaNWmcDNsJFxlLOtV8Ji5y4zLFZ-fe0bJGypCSvbOHTHrCOE8I4NPGyC_cpi9EUzqZOxTu_g57fmlI-iNbPE-CISmdYgv6xohO8K7R8A9uNsFWQwe5iKDsYX0yDyCtZC-Y1gEedXiv7/s200/image_search_1731927945423.jpg" alt="**" onclick="window.location.href='../book/novel/NIGHTMARE_ON_ELM_STREET_DREAM_REUNION_brlypf.html'">
+				 <a href="../book/novel/NIGHTMARE_ON_ELM_STREET_DREAM_REUNION_brlypf.html"> <h3> nightmare on elm street - dream reunion</h3></a>
+			          </div>
+    <!---------------------------------->  
+	<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkACyGzBixllBYKg6wQNtvEwft_6JyVWgDFBVQCxYwhX7uSwdWQcinOLLMLLVmpWRUMNOsB5QYzkjAs352CY9f_9qMSYI8bek0SdiT4BPuf4tEBq4ej-NwKI10O5cRnKpSganIaREt6u-EJwEm226yNsrTMXpOjeOVGByBP0RF2uCDNAtovUfNbWgcXb_m/s200/image_search_1731927591145.jpg" alt="**" onclick="window.location.href='../book/novel/King-Solomon_s-Mines-_rnkotq.html'">
+				 <a href="../book/novel/King-Solomon_s-Mines-_rnkotq.html"> <h3> King Solomon's mines</h3></a>
+			          </div>
+    <!---------------------------------->  
+<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjwY-8UuuoJj3Tg2KfXlkhbmrFf_JfWgHA7zXEWH6_Sw0LK9Sk9eNvZsMqqGy0Yhpq25hLr1DUDfJhtDgpoRAwaDCOi2gwn3e2PAh-F67BdHzveoKeLsoA8_tZoGpvOMV2e75myLwQAoczBgQaZPFilyVSe18PkXIHbrqtnVv-dTNXpIW0VJUrEXzuWC8J1/s200/image_search_1731927556858.jpg" alt="**" onclick="window.location.href='../book/novel/Bull-Hunter_hh9ent.html'">
+				 <a href="../book/novel/Bull-Hunter_hh9ent.html"> <h3> bull hunter</h3></a>
+			          </div>
+    <!---------------------------------->  
+	<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiF1sHNJsEJwu5gwgDCa1XxQwAMLG4qTsOXAOxVA2V8u-Ke1lpDkqa-MKf_Rci_AL6ZUL8fiz-o97RgW_hpwn4GRGC_lSwrevlzljNt9mSuv4T21mf3Yly_kqk3yGZtLxr_rYKnZoaDIt5EjdbqeUMU-fL1ho9S48S25VA-JOWGmKercLMLpYd8QMtT_-kK/s200/image_search_1731927491020.jpg" alt="**" onclick="window.location.href='../book/novel/Heart-of-the-Sunset_hqpnba.html'">
+				 <a href="../book/novel/Heart-of-the-Sunset_hqpnba.html"> <h3> heart of the sunset</h3></a>
+			          </div>
+    <!---------------------------------->  
+<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgV9GSyZPCqH9oqbKn94Mmp8plsYGea7fHmPBZUzqGEo0Jkfgwdtm4YkisuRH8FG9yvxY-W-NoOh9X6nL3XQka8xcwO7lxXE6BJKD00dMWd4tnJaGgWITQ3lF-YIjXbu5-oFoX__eIRTMSOaWhKmqVlCv88nAVrbWNrz4dGWahXRJDysXuNntNWAPBAZqmL/s200/image_search_1731927423150.jpg" alt="**" onclick="window.location.href='../book/novel/Ayesha_ummkbx.pdf.html'">
+				 <a href="../book/novel/Ayesha_ummkbx.pdf.html"> <h3> ayesha</h3></a>
+			          </div>
+    <!---------------------------------->  
+	<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjRQMOnkHVc4-YDZzdRRtg6DeQIQOh4CUFBU8K96CGXlfEf5YLwUWruxOkFPwV1n4CTAH5pxQlpEgmW9Co2k1WMWMQa-zvxp_pZAukF01kw2Hu0HIX_cftUMhEdE8CJxvw40cBeBvgRJ_T0h0voZlVd8h5qVb2VQFmasg9fwHEp6JBwP1ylWa9eyWWTLrGx/s200/image_search_1731927324918.jpg" alt="**" onclick="window.location.href='../book/novel/Captain-Boldheart--the-Latin-Grammar-Master_fksbzc.html'">
+				 <a href="../book/novel/Captain-Boldheart--the-Latin-Grammar-Master_fksbzc.html"> <h3> captain boldheart</h3></a>
+			          </div>
+    <!---------------------------------->  
+<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_hxF-Y3po8fvUg07p22vN_9sZmfaP_72VwbXRjVfxp2Aa00eHXHWZ4G5OU3mnA0yB9GC76Xrh3zG5fWzi9uc5dQ7Sz-MaQGxBxZNGkSvoUq9WY-1kTAwlUPSMNJg1lFzj4CWrkrtU_bTjzds0iT9ssdSfaYAcdmQcV5Fwi3uoPYbu0zlyW032pmp3Zo45/s200/image_search_1731927290926.jpg" alt="**" onclick="window.location.href='../book/novel/Blackbeard-Buccaneer_hl7php.html'">
+				 <a href="../book/novel/Blackbeard-Buccaneer_hl7php.html"> <h3>blackbeard buccaneer </h3></a>
+			          </div>
+    <!---------------------------------->  
+	<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhAjIfVpWe4NfAkyU0AoBXoTQ3EH5p6igm-SsXvGcPXDZnILvQEbYqJZxHFklhgFQDWVAPbK7SCvSPMxzyjIigeqSpXeoWedxcREtHeXVZLPJ_OVGA8HprJgnSQSpC-V9Fh0InSxZr4plWSvFAHJaCAKiPYbYaevntA9Y-1xf40-6TkYAweiB8lbDG0XIKf/s200/image_search_1731927264374.jpg" alt="**" onclick="window.location.href='../book/novel/A-Girl-of-the-Limberlost_aa0jtn.html'">
+				 <a href="../book/novel/A-Girl-of-the-Limberlost_aa0jtn.html"> <h3> A girl of the limberlost </h3></a>
+			          </div>
+    <!---------------------------------->  
+<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitsyBBo9r-TTilj7JtZ0E7rA_VlgdLkeyhUYj49RdzcqFOL_cWrCF8iPwfucacUpnpaegdBI9UIywq8By70WqBiyER-oa5nskdourpGhTrHm4Hut_jQT6SROg3sewAVpteRVEno_xMTTOXFoDJKsilqkkNApNMy4ZaL-WS22Sh4i2qB4UAGiY4jkFe8330/s200/image_search_1731927234017.jpg" alt="**" onclick="window.location.href='../book/novel/A-Yacht-Voyage-Round-England_1_c2kfc6.pdf.html'">
+				 <a href="../book/novel/A-Yacht-Voyage-Round-England_1_c2kfc6.pdf.html"> <h3> A yacht voyage round england</h3></a>
+			          </div>
+    <!---------------------------------->  
+	<div class="book">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiMB4cN1FSkdUKCXhe-0IkOIWQEts0kRCTF20aA87cfFvlEJZrXGjbSGEGZEi91nKmqXY9fkBzCb9GSVK658WDUUFyie7dSZM2kwkkpLmy1DBzdjnxu3MUKbOCjGK6EDDSM7fXiL_NrXjGg6ECB3AV8gGe_SIPBUBBWvHbOiVTGYFy2RonhZCC2wfcNd2-Z/s200/image_search_1731927069879.jpg" alt="**" onclick="window.location.href='../book/novel/Freckles_zsdbsm.pdf.html'">
+				 <a href="../book/novel/Freckles_zsdbsm.pdf.html"> <h3> freckles</h3></a>
+			          </div>
+    <!---------------------------------->  	
+</div>
+</section>			
+</div>
+ <!------------end of content container---->
+</div>
+
+
+<script>
+const navList = document.getElementById('nav-list');
+const navItems = navList.querySelectorAll('.nav-item');
+const navBox = document.getElementById('nav-scroll-box');
+const contentContainer = document.getElementById('content-container');
+const contentDivs = contentContainer.querySelectorAll('.content');
+const prevButton = document.getElementById('prev-button');
+const nextButton = document.getElementById('next-button');
+let currentIndex = 0;
+
+// Initialize navigation
+navItems.forEach((navItem, index) => {
+  navItem.addEventListener('click', () => {
+    // Hide all content
+    contentDivs.forEach((contentDiv) => {
+      contentDiv.classList.add('hidden');
+    });
+
+    // Show selected content
+    const contentId = navItem.dataset.contentId;
+    document.getElementById(contentId).classList.remove('hidden');
+
+    // Update current index
+    currentIndex = index;
+
+    // Update active nav item
+    navItems.forEach((item) => item.classList.remove('active'));
+    navItem.classList.add('active');
+
+    // Scroll nav box to selected item
+    navBox.scrollLeft = index * (navItem.offsetWidth + 20);
+  });
+});
+
+// Previous button click event
+prevButton.addEventListener('click', () => {
+  // Hide current content
+  contentDivs[currentIndex].classList.add('hidden');
+
+  // Decrement index
+  currentIndex = (currentIndex - 1 + navItems.length) % navItems.length;
+
+  // Show previous content
+  contentDivs[currentIndex].classList.remove('hidden');
+
+  // Update active nav item
+  navItems.forEach((item) => item.classList.remove('active'));
+  navItems[currentIndex].classList.add('active');
+
+  // Scroll nav box to selected item
+  navBox.scrollLeft = currentIndex * (navItems[currentIndex].offsetWidth + 20);
+});
+
+// Next button click event
+nextButton.addEventListener('click', () => {
+  // Hide current content
+  contentDivs[currentIndex].classList.add('hidden');
+
+  // Increment index
+  currentIndex = (currentIndex + 1) % navItems.length;
+
+  // Show next content
+  contentDivs[currentIndex].classList.remove('hidden');
+
+  // Update active nav item
+  navItems.forEach((item) => item.classList.remove('active'));
+  navItems[currentIndex].classList.add('active');
+
+  // Scroll nav box to selected item
+  navBox.scrollLeft = currentIndex * (navItems[currentIndex].offsetWidth + 20);
+});
+
+// Set initial active navigation item and content
+navItems[0].classList.add('active');
+navItems[0].click();
+</script>
+
+
+
+
+    
+		
+     
+
+		
+
+
+	
+	
+	<br>
+		<br>
+	
+<div class="footer" Style="Font-family:'roboto condensed';Text-align:center; margin-bottom:5px; margin-top:10px;
+    Font-weight:bold; background:black; width:; border-radius:15px;  padding:16px; color:white;Margin-left:; Margin-right:;">
+      <div class="foot-link" style="display:flex;"><h3 onclick="window.location.href='policy.html'"> Privacy Policy</h3> &nbsp;&nbsp;&nbsp;&nbsp;<h3 onclick="window.location.href='contact.html'">contact us</h3></div>  copyright &copy; <span id="year"></span> Novelgasm</div>
+<script src="../js/footer.js"></script>
+</footer>
+</body>
+</html>
+
