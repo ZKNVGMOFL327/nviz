@@ -1,0 +1,324 @@
+<script>
+let pdfDoc = null;
+let currentPage = 1;
+let currentBatchStart = 1;
+let currentBookName = '';
+let textContentCache = {};
+let searchResults = [];
+let currentResultIndex = -1;
+
+// Retrieve the PDF URL and title from the meta tags
+const url = document.querySelector('meta[name="pdf-url"]').getAttribute('content');
+const title = document.querySelector('meta[name="word"]').getAttribute('content');
+
+// Load the PDF document on DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+    if (url) {
+        currentBookName = title;
+        loadPdf(url);
+    } else {
+        console.error('PDF URL not found in meta tags.');
+    }
+
+    const savedData = JSON.parse(localStorage.getItem('savedPage'));
+    if (savedData && savedData.title === title) {
+        currentPage = parseInt(savedData.page, 10);
+        currentBatchStart = Math.floor((currentPage - 1) / 50) * 50 + 1;
+    }
+
+    // Add an invisible line to the text container
+    const textContainer = document.getElementById('text-container');
+    const invisibleLine = document.createElement('div');
+    invisibleLine.style.position = 'absolute';
+    invisibleLine.style.top = '30px';
+    invisibleLine.style.left = '0';
+    invisibleLine.style.width = '100%';
+    invisibleLine.style.height = '1px';
+    invisibleLine.style.backgroundColor = 'transparent'; // Invisible
+    textContainer.appendChild(invisibleLine);
+
+    // Monitor scrolling and determine the current page
+    textContainer.addEventListener('scroll', () => {
+        const pages = Array.from(textContainer.querySelectorAll('h2'));
+        let lastVisiblePage = null;
+
+        for (let page of pages) {
+            const pagePosition = page.getBoundingClientRect().top - textContainer.getBoundingClientRect().top;
+
+            if (pagePosition <= 30) {
+                // If the page is at or above the detection line
+                lastVisiblePage = parseInt(page.textContent.replace('Page ', ''), 10);
+            } else if (pagePosition > 30) {
+                // If the page is below the detection line, stop checking
+                break;
+            }
+        }
+
+        if (lastVisiblePage !== null && lastVisiblePage !== currentPage) {
+            currentPage = lastVisiblePage;
+            console.log(`Current page set to ${currentPage}`);
+            document.getElementById('page_num').textContent = `Current Page: ${currentPage}`;
+            document.getElementById('page_num_bottom').textContent = `Current Page: ${currentPage}`;
+        }
+    });
+});
+
+
+// Load the PDF document
+function loadPdf(pdfUrl) {
+    const loadingTask = pdfjsLib.getDocument(pdfUrl);
+    loadingTask.promise
+        .then((pdf) => {
+            pdfDoc = pdf;
+            document.getElementById('page_count').textContent = pdf.numPages;
+            document.getElementById('page_count_bottom').textContent = pdf.numPages;
+            renderBatch(currentBatchStart);
+        })
+        .catch((error) => {
+            console.error('Error loading PDF:', error);
+        });
+}
+
+// Format text content
+function formatTextContent(items) {
+    let textContent = '';
+    let lastY = -1;
+    items.forEach((item) => {
+        const currentY = item.transform[5];
+        if (lastY !== -1 && Math.abs(currentY - lastY) > 10) {
+            textContent += '\n'; // Add a line break for vertical gaps
+        }
+        textContent += item.str.replace(/\s+/g, ' ') + ' ';
+        lastY = currentY;
+    });
+    return textContent.trim();
+}
+
+// Render a batch of 50 pages
+function renderBatch(startPage) {
+    const endPage = Math.min(startPage + 49, pdfDoc.numPages);
+    const textContainer = document.getElementById('text-container');
+    textContainer.innerHTML = ''; // Clear the container
+
+    // Show the loading message in the current batch display area
+    const pageNumElement = document.getElementById('page_num');
+    const pageNumBottomElement = document.getElementById('page_num_bottom');
+    const originalPageNumText = pageNumElement.textContent; // Save the original text
+    pageNumElement.textContent = 'Loading batch...';
+    pageNumBottomElement.textContent = 'Loading batch...';
+
+    const promises = [];
+    for (let pageNum = startPage; pageNum <= endPage; pageNum++) {
+        promises.push(
+            pdfDoc.getPage(pageNum).then((page) =>
+                page.getTextContent().then((text) => {
+                    const formattedText = formatTextContent(text.items);
+                    textContentCache[pageNum] = formattedText; // Cache text content
+                    return { pageNum, formattedText };
+                })
+            )
+        );
+    }
+
+    return Promise.all(promises)
+        .then((results) => {
+            results.sort((a, b) => a.pageNum - b.pageNum); // Ensure order
+            textContainer.innerHTML = ''; // Clear any remaining messages
+
+            results.forEach(({ pageNum, formattedText }) => {
+                const pageHeader = `<h2>Page ${pageNum}</h2>`;
+                let highlightedText = formattedText;
+
+                // Highlight search terms in the text
+                searchResults.forEach((resultPage) => {
+                    if (resultPage === pageNum) {
+                        const searchTerm = document.getElementById('search_input').value.toLowerCase();
+                        const regex = new RegExp(`(${searchTerm})`, 'gi');
+                        highlightedText = highlightedText.replace(
+                            regex,
+                            `<span class="highlight">$1</span>`
+                        );
+                    }
+                });
+
+                textContainer.innerHTML += pageHeader + `<p>${highlightedText}</p>`;
+            });
+
+            textContainer.scrollTop = 0; // Reset scroll to top
+        })
+        .catch((error) => {
+            console.error('Error rendering batch:', error);
+        })
+        .finally(() => {
+            // Update the current batch information after loading
+            pageNumElement.textContent = `Current Batch: ${startPage}-${endPage}, Current Page: ${currentPage}`;
+            pageNumBottomElement.textContent = `Current Batch: ${startPage}-${endPage}, Current Page: ${currentPage}`;
+        });
+}
+
+// Navigation buttons for 50-page batches
+// Existing batch navigation buttons
+document.getElementById('prev').addEventListener('click', () => {
+    if (currentBatchStart > 1) {
+        currentBatchStart = Math.max(currentBatchStart - 50, 1);
+        renderBatch(currentBatchStart);
+    }
+});
+
+document.getElementById('next').addEventListener('click', () => {
+    if (currentBatchStart + 50 <= pdfDoc.numPages) {
+        currentBatchStart = Math.min(currentBatchStart + 50, pdfDoc.numPages);
+        renderBatch(currentBatchStart);
+    }
+});
+
+// New duplicate batch navigation buttons
+document.getElementById('prev_bottom').addEventListener('click', () => {
+    if (currentBatchStart > 1) {
+        currentBatchStart = Math.max(currentBatchStart - 50, 1);
+        renderBatch(currentBatchStart);
+    }
+});
+
+document.getElementById('next_bottom').addEventListener('click', () => {
+    if (currentBatchStart + 50 <= pdfDoc.numPages) {
+        currentBatchStart = Math.min(currentBatchStart + 50, pdfDoc.numPages);
+        renderBatch(currentBatchStart);
+    }
+});
+
+// Go to a specific page
+document.getElementById('go').addEventListener('click', () => {
+    const goToPage = parseInt(document.getElementById('page_input').value, 10);
+    if (goToPage > 0 && goToPage <= pdfDoc.numPages) {
+        currentPage = goToPage;
+        currentBatchStart = Math.floor((goToPage - 1) / 50) * 50 + 1;
+        
+        renderBatch(currentBatchStart).then(() => {
+            // Scroll to the specified page within the loaded batch
+            const textContainer = document.getElementById('text-container');
+            const targetPageHeader = Array.from(
+                textContainer.querySelectorAll('h2')
+            ).find((header) => header.textContent.trim() === `Page ${goToPage}`);
+
+            if (targetPageHeader) {
+                const offsetTop = targetPageHeader.offsetTop;
+                textContainer.scrollTop = offsetTop - 30; // Adjust for alignment
+            } else {
+                console.error(`Page header for Page ${goToPage} not found in the loaded batch.`);
+            }
+        });
+    } else {
+        alert('Invalid page number.');
+    }
+});
+
+// Save the current page
+document.getElementById('save').addEventListener('click', () => {
+    const saveData = { title, page: currentPage };
+    localStorage.setItem('savedPage', JSON.stringify(saveData));
+    alert(`Page ${currentPage} of "${title}" saved!`);
+});
+
+// Load the saved page
+document.getElementById('load').addEventListener('click', () => {
+    const savedData = JSON.parse(localStorage.getItem('savedPage'));
+    if (savedData && savedData.title === title) {
+        currentPage = savedData.page;
+        currentBatchStart = Math.floor((currentPage - 1) / 50) * 50 + 1;
+        renderBatch(currentBatchStart).then(() => {
+            // Scroll to the saved page within the loaded batch
+            const textContainer = document.getElementById('text-container');
+            const targetPageHeader = Array.from(
+                textContainer.querySelectorAll('h2')
+            ).find((header) => header.textContent.trim() === `Page ${savedData.page}`);
+
+            if (targetPageHeader) {
+                const offsetTop = targetPageHeader.offsetTop;
+                textContainer.scrollTop = offsetTop - 30; // Adjust for alignment
+            } else {
+                console.error(`Page header for Page ${savedData.page} not found in the loaded batch.`);
+            }
+        });
+        alert(`Loaded saved page ${savedData.page} of "${title}".`);
+    } else {
+        alert(`No saved page for "${title}".`);
+    }
+});
+
+// Search for a term
+document.getElementById('search').addEventListener('click', () => {
+    const searchTerm = document.getElementById('search_input').value.toLowerCase();
+    searchResults = [];
+    currentResultIndex = -1;
+
+    Object.keys(textContentCache).forEach((page) => {
+        if (textContentCache[page]?.toLowerCase().includes(searchTerm)) {
+            searchResults.push(parseInt(page, 10));
+        }
+    });
+
+    if (searchResults.length > 0) {
+        currentResultIndex = 0;
+        currentPage = searchResults[currentResultIndex];
+        currentBatchStart = Math.floor((currentPage - 1) / 50) * 50 + 1;
+
+        renderBatch(currentBatchStart).then(() => {
+            // Scroll to the first search result
+            scrollToSearchResult(currentPage);
+        });
+
+        updateSearchNavigationButtons();
+    } else {
+        alert('Term not found.');
+    }
+});
+
+function scrollToSearchResult(pageNum) {
+    const textContainer = document.getElementById('text-container');
+    const targetPageHeader = Array.from(textContainer.querySelectorAll('h2')).find(
+        (header) => header.textContent.trim() === `Page ${pageNum}`
+    );
+
+    if (targetPageHeader) {
+        const offsetTop = targetPageHeader.offsetTop;
+        textContainer.scrollTop = offsetTop - 30; // Adjust for alignment
+    } else {
+        console.error(`Page header for Page ${pageNum} not found in the loaded batch.`);
+    }
+}
+
+// Search navigation
+document.getElementById('prev_search').addEventListener('click', () => {
+    if (currentResultIndex > 0) {
+        currentResultIndex--;
+        currentPage = searchResults[currentResultIndex];
+        currentBatchStart = Math.floor((currentPage - 1) / 50) * 50 + 1;
+        renderBatch(currentBatchStart).then(() => {
+            // Scroll to the current search result
+            scrollToSearchResult(currentPage);
+        });
+        updateSearchNavigationButtons();
+    }
+});
+
+document.getElementById('next_search').addEventListener('click', () => {
+    if (currentResultIndex < searchResults.length - 1) {
+        currentResultIndex++;
+        currentPage = searchResults[currentResultIndex];
+        currentBatchStart = Math.floor((currentPage - 1) / 50) * 50 + 1;
+        renderBatch(currentBatchStart).then(() => {
+            // Scroll to the current search result
+            scrollToSearchResult(currentPage);
+        });
+        updateSearchNavigationButtons();
+    }
+});
+
+// Update search navigation buttons
+function updateSearchNavigationButtons() {
+    document.getElementById('prev_search').disabled = currentResultIndex <= 0;
+    document.getElementById('next_search').disabled =
+        currentResultIndex >= searchResults.length - 1;
+}
+</script>
